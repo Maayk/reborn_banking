@@ -8,6 +8,7 @@ What have?
   - History 
   - last 50 activite transactions movimented (all money transactions)
 
+the look was based on something I found on behance
 
 probably everything here is very archaic and can be refactored in a much simpler and faster way, when I have time I'll do it.
 
