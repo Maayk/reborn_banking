@@ -1,0 +1,487 @@
+body{
+     font-family: 'Inter', sans-serif;
+}
+.show-rg{
+     position: relative;
+     top: 30vh;
+     /* left: 141vh; */
+     display: none;
+     float: right;
+     right: 7vh;
+     width: 52.5vh;
+     height: 61.4vh;
+     background-image: url(../img/identidades.png);
+     background-repeat: no-repeat;
+     background-position: -3vh 1vh;
+     background-size: 57vh 65vh;
+}
+.foto-pessoal{
+     position: absolute;
+     top: 38.4vh;
+     left: 7.24vh;
+     width: 12vh;
+     height: 14.5vh;
+     background-color: #ebebeb;
+     background-position: center;
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-repeat: no-repeat;
+}
+.nome-sobrenome{
+     position: absolute;
+     top: 39.8vh;
+     color: #7f9aab;
+     font-size: 1.6vh;
+     left: 22vh;
+}
+.field-nomesobrenome{
+     position: absolute;
+     top: 43vh;
+     left: 22vh;
+     color: #7f9aab;
+     font-variant-caps: all-small-caps;
+     font-size: 2vh;
+}
+.RG{
+     position: absolute;
+     color: #7f9aab;
+     top: 34.7vh;
+     left: 13.5vh;
+     font-weight: 500;
+}
+.Nascimento{
+     position: absolute;
+     color: #7f9aab;
+     top: 39.5vh;
+     right: 10.5vh;
+     font-weight: 500;
+}
+.assinatura{
+     font-family: 'Parisienne', cursive;
+     position: absolute;
+     color: #7f9aab;
+     top: 8vh;
+     right: 5vh;
+     font-weight: 500;
+     font-size: 2.7vh;
+     width: 21vh;
+}
+.nacionalidade{
+     position: absolute;
+     color: #7f9aab;
+     top: 46.45vh;
+     left: 22vh;
+     font-weight: 500;
+     font-size: 2vh;
+     width: 21vh;
+     font-variant-caps: all-small-caps;
+}
+.genero{
+     position: absolute;
+     color: #7f9aab;
+     top: 49.45vh;
+     left: 22vh;
+     font-weight: 500;
+     font-size: 2vh;
+     width: 21vh;
+     font-variant-caps: all-small-caps;
+}
+.bank-container{
+     position: relative;
+     display: none;
+     top: 15vh;
+     right: 0;
+     left: 0;
+     margin: auto;
+     width: 108vh;
+     height: 65vh;
+     text-align: center;
+     border: 0.3vh solid #E6EBFC;
+     border-radius: 2vh;
+     background-color: #fafafe6e;
+}
+.left-container{
+     position: absolute;
+     left: 1vh;
+     top: 1vh;
+     width: 20%;
+     height: 96%;
+     background-color: #3257A1;
+     border-top-left-radius: 2vh;
+     border-bottom-left-radius: 2vh;
+}
+.logo-header{
+     position: relative;
+     height: 7vh;
+     line-height: 11vh;
+     font-size: 2.5vh;
+     color: rgba(255, 255, 255, 0.767);
+     font-family: monospace;
+}
+logo{
+     color: white;
+}
+.movimento-conta{
+     position: relative;
+     background-color: white;
+     display: grid;
+     height: 5vh;
+     width: 24vh;
+     border-radius: 0.5vh;
+     padding-top: 0.6vh;
+     font-size: 1.2vh;
+     top: 3vh;
+     box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 16px;
+}
+.movimentacao{
+
+}
+.movimento_quantidade{
+     font-weight: 600;
+     color: #34405F;
+     font-size: 1.6vh;
+}
+.home-container{
+     position: absolute;
+     left: 22.6vh;
+     top: 1vh;
+     width: 78%;
+     height: 95.8%;
+     background-color: #F2F5FA;
+     border-top-right-radius: 2vh;
+     border-bottom-right-radius: 2vh;
+}
+.alinhado-esquerda{
+     position: relative;
+     width: 30vh;
+     height: 100%;
+}
+.deposit-button{
+     position: absolute;
+     width: 41%;
+     height: 5vh;
+     top: 8vh;
+     color: white;
+     background-color: #2d6ed9;
+     font-size: 1.7vh;
+     line-height: 5vh;
+     border-radius: 0.5vh;
+     transition: all 0.2s;
+}
+.deposit-button:hover{
+     background-color: #214c90;
+     transition: all 0.2s;
+}
+.sacar-button{
+     position: absolute;
+     width: 41%;
+     height: 5vh;
+     top: 8vh;
+     color: white;
+     background-color: #2d6ed9;
+     font-size: 1.7vh;
+     line-height: 5vh;
+     border-radius: 0.5vh;
+     transition: all 0.2s;
+}
+.sacar-button:hover{
+     background-color: #214c90;
+     transition: all 0.2s;
+}
+.transf-button{
+     position: absolute;
+     width: 41%;
+     height: 5vh;
+     top: 8vh;
+     color: white;
+     background-color: #2d6ed9;
+     font-size: 1.7vh;
+     line-height: 5vh;
+     border-radius: 0.5vh;
+     transition: all 0.2s;
+}
+.transf-button:hover{
+     background-color: #214c90;
+     transition: all 0.2s;
+}
+.alinhado-esquerda:after{
+     position: absolute;
+     top: 9vh;
+     right: 0;
+     content: "";
+     border-right: 0.3vh solid #E6EBFC;
+     height: 80%;
+}
+.titulo-second{
+     position: relative;
+     height: 9vh;
+     line-height: 10vh;
+     font-size: 2vh;
+     text-align: left;
+     text-indent: 3vh;
+     color: #34405F;
+     font-weight: 500;
+     font-family: 'Inter', sans-serif;
+}
+.avatar-icone{
+     position: absolute;
+     top: 3.0vh;
+     left: 77vh;
+     width: 4vh;
+     height: 4vh;
+     border-radius: 50%;
+     background-color: #bad4ee;
+     background-size: cover;
+     background-repeat: no-repeat;
+}
+.saldo-container{
+     position: relative;
+     background-color: white;
+     height: 7vh;
+     width: 24vh;
+     border-radius: 0.5vh;
+     left: 3vh;
+     box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 16px;
+}
+.saldo-field{
+     position: relative;
+     top: 1.4vh;
+     color: gray;
+     font-size: 1.4vh;
+     font-family: 'Inter', sans-serif;
+}
+.saldo-conta{
+     position: absolute;
+     width: 100%;
+     height: 4vh;
+     line-height: 3vh;
+     font-size: 1.7vh;
+     bottom: 0;
+     color: #34405F;
+     font-weight: 600;
+     font-family: 'Inter', sans-serif;
+}
+.contas-banco{
+     position: relative;
+     left: 3vh;
+     top: 2vh;
+     width: 24vh;
+     height: 42vh;
+}
+.header-contas{
+     position: relative;
+     display: flex;
+}
+.contas-item{
+     color: #34405F;
+     font-size: 1.6vh;
+}
+.contas-item i{
+     position: relative;
+     top: 0.8vh;
+     color: #5C72E0;
+     font-size: 2.5vh;
+}
+.contas-item2{
+     position: absolute;
+     right: 0vh;
+     color: #5C72E0;
+     line-height: 4vh;
+     font-size: 1.6vh;
+}
+.logout-button{
+     position: absolute;
+     bottom: 4vh;
+     left: 1.22vh;
+     width: 88%;
+     color: #a3bfff;
+     line-height: 4vh;
+     height: 5vh;
+     padding-top: 0.3vh;
+     cursor: pointer;
+     border-radius: 0.5vh;
+}
+.logout-button i{
+     position: relative;
+     line-height: 4vh;
+     right: 2vh;
+}
+.logout-button span{
+     position: relative;
+     bottom: 0.7vh;
+     right: 1vh;
+}
+.conta-cartao{
+     position: relative;
+     width: 100%;
+     top: 1vh;
+     height: 14vh;
+     border-radius: 1vh;
+     background: linear-gradient(1108deg,#3257A1, #82a1df);
+     box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 16px;
+}
+.card-bankname{
+     position: absolute;
+     top: 1vh;
+     left: 2vh;
+     color: rgba(255, 255, 255, 0.712);
+     font-size: 1.6vh;
+}
+.card-ownername{
+     position: absolute;
+     left: 2vh;
+     bottom: 5vh;
+     font-size: 1.7vh;
+     color: white;
+}
+.validade-area{
+     position: absolute;
+     bottom: 1.5vh;
+     left: 2vh;
+     display: grid;
+     width: 13vh;
+     height: 3vh;
+     font-size: 1.4vh;
+     text-align: left;
+}
+.validade-field{
+     position: relative;
+     line-height: 1;
+     color: #ffffffa3;
+}
+.validade-data{
+     position: relative;
+     line-height: 2.0vh;
+     color: white;
+     font-size: 1.6vh;
+}
+.card-bandeira{
+     position: absolute;
+     bottom: 1.5vh;
+     width: 6vh;
+     right: 2vh;
+     height: 2vh;
+     background-image: url(../img/visa.png);
+     background-size: contain;
+}
+
+.transacoes-box{
+     position: absolute;
+     top: 9vh;
+     right: 3vh;
+     border-radius: 1vh;
+     height: 26vh;
+     width: 59%;
+     background-color: white;
+     box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 16px;
+}
+.historico-box{
+     position: absolute;
+     top: 37vh;
+     right: 3vh;
+     border-radius: 1vh;
+     height: 21vh;
+     width: 59%;
+     background-color: white;
+     box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 16px;
+}
+.centered{
+     position: relative;
+    display: flex;
+    justify-content: center;
+}
+.titulo-box{
+     position: relative;
+     width: 44vh;
+     left: 1vh;
+     height: 6vh;
+     line-height: 6vh;
+     font-size: 1.8vh;
+     text-align: left;
+     color: rgb(52, 64, 95);
+     font-weight: 500;
+     font-family: Inter, sans-serif;
+}
+.lista-historico{
+     position: relative;
+     width: 98%;
+     left: 0.5vh;
+     height: 19vh;
+     top: 1vh;
+     overflow-y: scroll;
+     overflow-x: hidden;
+}
+.lista-historico::-webkit-scrollbar {
+     width: .3vh;
+ }
+ 
+ .lista-historico::-webkit-scrollbar-thumb {
+     background-color: rgb(173, 173, 173);
+ }
+ 
+ .lista-historico::-webkit-scrollbar-track {
+     background-color: #ebebeb00;
+ }
+.historico-item{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 3vh;
+    line-height: 3vh;
+    width: 100%;
+    font-size: 1.4vh;
+    margin-bottom: 0.5vh;
+    border-bottom: 0.1vh solid #eeeeee;
+    transition: all 0.2s;
+}
+.historico-item:hover{
+     background-color: rgba(128, 128, 128, 0.089);
+     transition: all 0.2s;
+}
+.field-nome{
+     position: absolute;
+     left: 2vh;
+     font-family: sans-serif;
+     font-size: 1.3vh;
+     font-weight: 600;
+     color: rgb(73, 73, 73);
+}
+.field-data{
+     position: absolute;
+     left: 15.5vh;
+     font-family: sans-serif;
+     font-size: 1.3vh;
+     font-weight: 400;
+     color: #80808078;
+     /* background-color: rgba(212, 212, 212, 0.185); */
+}
+.field-tipo{
+     position: absolute;
+     left: 26vh;
+     color: #72a9ee;
+     width: 15vh;
+}
+.field-valor{
+     position: absolute;
+     right: 0.6vh;
+     color: #34405F;
+     font-size: 1.2vh;
+}
+
+.tabs .tab a:hover, .tabs .tab a.active{
+     background-color: transparent;
+     color: #4d7ce9 !important;
+}
+.tabs .tab a:hover, .tabs .tab a.active{
+     color: #4d7ce9 !important;
+}
+.tabs .tab a{
+     color: #4d7ce9 !important; 
+}
+.tabs .indicator{
+     background-color: #4d7ce9 !important; 
+}
+.tabs .tab a:focus, .tabs .tab a:focus.active{
+     background-color: rgba(178, 208, 246, 0.2) !important;
+}

@@ -1,0 +1,28 @@
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(4)
+--         if LoggedIn then
+--          IsNearBank = false
+--             for k, v in pairs(Config.Banks) do
+--               local PlayerCoords = GetEntityCoords(GetPlayerPed(-1))
+--               local Distance = GetDistanceBetweenCoords(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z, v['X'], v['Y'], v['Z'], true)
+--               if Distance < 2.5 then
+--               IsNearBank = true
+--                   if v['IsOpen'] then
+--                       DrawMarker(2, v['X'], v['Y'], v['Z'], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.05, 48, 255, 58, 255, false, false, false, 1, false, false, false)
+--                       DrawText3Ds(v['X'], v['Y'], v['Z'] + 0.3, '~g~E ~s~- Kaart valideren')
+--                       if IsControlJustPressed(1, Keys["E"]) then
+--                           openBank(true)
+--                       end
+--                   else
+--                       CanOpenBank = false
+--                       DrawMarker(2, v['X'], v['Y'], v['Z'], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.05, 255, 72, 48, 255, false, false, false, 1, false, false, false)
+--                   end
+--               end
+--             end
+--             if not IsNearBank then
+--                 Citizen.Wait(1500)
+--             end
+--         end
+--     end
+-- end)

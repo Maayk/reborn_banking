@@ -1,0 +1,909 @@
+body {
+    font-family: 'Lato', sans-serif;
+    user-select: none;
+    top: 15%;
+    left: 21.5%;
+    position: absolute;
+    width: 105vh;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.bank-container {
+    margin-left: 30%;
+    background-color: #EEEEEE;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 65vh;
+}
+
+.bank-main-card {
+    margin-top: 5px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.bank-main-card .bank-logo {
+    float: right;
+}
+
+.bank-main-card-content {
+    float: left;
+}
+
+.bank-main-card h4 {
+    margin: 0;
+    padding: 0;
+}
+.left-header-logo{
+    position: relative;
+    width: 100%;
+    top: 0.5vh;
+    text-align: center;
+    color: #ffffffcf;
+    font-size: 2vh;
+    font-family: revert;
+    height: 7vh;
+    line-height: 8vh;
+}
+.logo-secondname{
+    color: white;
+}
+
+.bank-container p {
+    padding: 0;
+    margin: 0;
+}
+
+.select-container {
+    width: 22%;
+    position: absolute;
+    height: 100%;
+    border-top-left-radius: 1.5vh;
+    border-bottom-left-radius: 1.5vh;
+    background-color: #3257a1ed;
+}
+
+h5 {
+    text-transform: uppercase;
+    margin: 0;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-bottom: 0;
+}
+
+.badge {
+    margin-left: 10px;
+    background-color: #626262;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 8px;
+}
+
+.bottom-border {
+    border-bottom: 2px solid #8a8a8a;
+    width: 75%;
+    margin: 0;
+    margin-left: 15px;
+}
+
+.whitespace {
+    padding-top: 5px;
+}
+
+.account-card {
+    border-left: 4px solid #a0a0a0;
+    height: auto;
+    width: auto;
+    background-color: #FAFAFA;
+    color: black;
+    margin: 14px;
+    padding: 10px;
+}
+
+.account-card i {
+    font-size: 32px;
+}
+
+.account-card:hover {
+    background-color: white;
+}
+
+.account-card-container {
+    padding-left: 5px;
+}
+
+.account-card-container p {
+    margin: 0;
+    padding: 0;
+}
+
+.account-card-container .account-name {
+    color: black;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.account-card-container .account-number {
+    color: grey;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.account-card-container .account-amount {
+    color: black;
+    font-size: 15px;
+}
+
+.button {
+    position: relative;
+    width: 28vh;
+    height: 15%;
+    background-color: rgb(228, 228, 228);
+    border-radius: 15px;
+    margin-top: 25%;
+    margin-left: 3.5%;
+}
+
+.button > p {
+    font-size: 3vh;
+    color: rgb(22, 21, 32);
+    padding-top: 10%;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: rgba(228, 228, 228, 0.774);  
+}
+
+.type-container {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.info-name {
+ position: absolute;
+ top: 1.5%;
+ right: 10%;
+ width: 50vh;
+ height: 5vh;
+ border-radius: 15px;
+ border-left: 5px solid rgb(51, 51, 51);
+ background-color: rgb(228, 228, 228);
+}
+
+.info-name > p {
+ text-align: left;
+ margin-left: 30%;
+ margin-top: 2.5%;
+ font-size: 2vh;
+}
+
+.info-balance {
+ position: absolute;
+ top: 19.5%;
+ right: 10%;
+ width: 50vh;
+ height: 15vh;
+ border-radius: 15px;
+ border-left: 5px solid rgb(51, 51, 51);
+ background-color: rgb(228, 228, 228);
+}
+
+.info-banknumber {
+  position: absolute;
+  bottom: 1.5%;
+  left: 1.5%;
+  width: 26vh;
+  height: 3vh;
+  border-radius: 15px;
+  border-left: 5px solid rgb(51, 51, 51);
+  background-color: rgb(228, 228, 228); 
+ }
+ 
+.info-banknumber > p {
+  text-align: center;
+  margin-top: 1%;
+  font-size: 2vh;
+}
+
+.input-container {
+ position: absolute;
+ bottom: 20.5%;
+ right: 10%;
+ width: 50vh;
+ height: 15vh;
+ font-size: 52px;
+ font-weight: 650;
+ border-radius: 15px;
+ border-left: 5px solid rgb(51, 51, 51);
+ background-color: rgb(228, 228, 228);
+}
+
+.info-balance > p {
+  text-align: left;
+  margin-left: 2%;
+  margin-top: 5.5%;
+  font-size: 7vh;
+}
+
+.logo {
+ position: absolute;
+ top: 2vh;
+ left: 45vh;
+ width: 17vh;
+ height: 3.2vh;
+}
+
+.loader {
+ position: absolute;
+ left: 45vh;
+ top: 22vh;
+ border: 16px solid #f3f3f3;
+ border-top: 16px solid rgb(105, 105, 105);
+ border-radius: 50%;
+ width: 15vh;
+ height: 15vh;
+ animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+ }
+
+.left {
+    width: 65%;
+    float: left;
+}
+
+.small-bottom-border {
+    padding-top: 5px;
+    border-bottom: 2px solid grey;
+    width: 60%;
+}
+
+.bank-title {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.whitespace-2x {
+    padding-top: 20px;
+}
+
+.bank-transaction {
+    padding-top: 5px;
+}
+
+.bank-transaction-slicer {
+    padding-top: 2px;
+    border-bottom: 1px solid grey;
+    width: 40%
+}
+
+.transaction-title {
+    font-size: 14px;
+}
+
+.transaction-time {
+    color: grey;
+    font-size: 12px;
+}
+
+.muted {
+    padding-top: 5px !important;
+    font-size: 14px;
+    color: #212121;
+}
+
+.bank-actions {
+    display: inline-block;
+}
+
+.bank-form:hover {
+    background-color: white;
+    border-bottom: 3px solid #b3b3b3;
+}
+
+.bank-form:focus {
+    background-color: white;
+    border-bottom: 3px solid #b3b3b3;
+}
+
+.bank-actions-button {
+    margin-top: 10px;
+    padding: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px solid #E0E0E0;
+    width: 355px;
+}
+
+.bank-withdraw {
+    color: white;
+    background-color: #43A047;
+    border-bottom: 3px solid #1B5E20;
+}
+
+.bank-withdraw:hover {
+    background-color: #66BB6A;
+    border-bottom: 3px solid #2E7D32;
+}
+
+.bank-deposit {
+    color: white;
+    background-color: #03A9F4;
+    border-bottom: 3px solid #0171a5;
+}
+
+.bank-deposit:hover {
+    background-color: #52c8ff;
+    border-bottom: 3px solid #0780b8;
+}
+
+.bank-button-logout {
+    position: absolute;
+    top: 84.7%;
+    left: -2%;
+    margin: 20px !important;
+    border: none;
+    width: 270px;
+    padding: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: #E53935;
+    border-left: 4px solid #8a1616;
+}
+
+.bank-button-logout:hover {
+    background-color: #ee625f;
+    border-left: 6px solid #af2323;
+}
+
+.selected-bank {
+ border-left-color: #4CAF50;
+}
+
+.account-data-multi {
+    position: absolute;
+}
+
+.bank-multiuser-list {
+    position: absolute;
+    top: 4vh;
+    right: 0;
+    padding: 1vh;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: #f3f3f3
+}
+
+.bank-multiuser-list ul {
+    margin: 0;
+    padding: 0;
+    display: inline-block
+}
+
+.bank-multiuser-list li {
+    margin-top: -10px;
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+.bank-multiuser-list p {
+    margin: 0;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.bank-user-rounded {
+    padding: 8px;
+    background-color: #E0E0E0;
+    border-radius: 50%;
+}
+
+.bank-user-rounded:hover {
+    background-color: #d3d3d3
+}
+
+.bank-user-delete i {
+    padding-left: 32px;
+    color: red;
+}
+
+.bank-user-delete i:hover {
+    color: rgb(167, 12, 12);
+
+}
+
+.bank-add-user {
+    padding-top: 10px;
+}
+
+.bank-add-user li {
+    margin-top: 0px;
+}
+
+.bank-add-user .bank-user-rounded i {
+    color: #66BB6A;
+    font-size: 20px;
+    padding: 8px;
+}
+
+.bank-add-user-modal {
+    position: absolute;
+    top: 35vh;
+    right: 0;
+}
+
+.add-user-container {
+    background-color: #f0f0f0;
+    padding-right: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.add-user-container input {
+    padding: 15px 8px 12px 8px;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #d3d3d3;
+    font-size: 14px;
+}
+
+.add-user-container input:hover {
+    border-bottom: 2px solid #9b9b9b;
+}
+
+.add-user-container button {
+    padding: 10px 10px 10px 10px;
+    background-color: transparent;
+    border: none;
+    color: #585858;
+    font-size: 18px;
+}
+
+.add-user-container button:hover {
+    color: #414141;
+}
+
+.bank-user-container {
+    padding: 20px;
+    background-color: #FAFAFA;
+    border-left: 4px solid #BDBDBD;
+}
+
+.bank-main-container {
+    padding: 15px;
+}
+
+.bank-transaction-container {
+    padding: 20px;
+    height: 94%;
+    width: 85%;
+    overflow-x: hidden;                  
+    overflow-y: auto;                  
+    text-align:justify;
+}
+
+.bank-transaction-container h5 {
+    padding: 0;
+    padding-bottom: 3px;
+}
+
+.bank-transaction-container .bottom-border {
+    margin: 0;
+    padding: 0;
+}
+
+/* .bank-transaction i {
+    color: #0277BD;
+    font-size: 18px;
+} */
+
+.bank-transaction .transaction-time i {
+    color: grey;
+    font-size: 10px;
+    padding-right: 5px;
+}
+
+.card-create-container form p {
+    font-size: 12px;
+    color: grey;
+    font-style: italic;
+    padding-top: 2.5px;
+    padding-left: 0;
+    margin: 0;
+}
+
+.bank-user-container {
+    padding: 20px;
+    background-color: #FAFAFA;
+    border-left: 4px solid #BDBDBD;
+}
+
+.bank-main-whitespace {
+    padding-top: 20px;
+}
+
+.bank-main-amount {
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 26px;
+    border-left: 3px solid green;
+}
+
+.bank-main-amount p {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.bank-buttons {
+    padding-top: 6px;
+}
+
+
+.bank-number-button i {
+    padding: 0;
+    margin: 0;
+}
+
+.bank-number-button:hover {
+    background-color: #E0E0E0;
+    border-bottom: 3px solid #9E9E9E;
+}
+
+.bank-transaction {
+    margin-top: 10px;
+    background-color: #FAFAFA;
+    padding: 10px;
+}
+
+.bank-transaction:hover {
+    background-color: white;
+}
+
+.bank-transaction-slicer {
+    padding-top: 2px;
+    border-bottom: 1px solid grey;
+    width: 40%
+}
+
+.transaction-title {
+    font-size: 14px;
+}
+
+.transaction-time {
+    color: grey;
+    font-size: 12px;
+}
+
+.muted {
+    padding-top: 5px !important;
+    font-size: 14px;
+    color: #212121;
+}
+
+.bank-card-create-holder {
+    margin: 0;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+    width: 70%;
+    height: 100%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.225);
+}
+
+.card-create-container {
+    background-color: #EEEEEE;
+    width: 45%;
+    height: 100%;
+}
+
+.card-create-container h4 {
+    padding: 20px;
+    margin: 0;
+}
+
+.h4-title-border {
+    border-bottom: 2px solid #757575;
+    width: 70%;
+    margin-top: -14px;
+    margin-left: 20px;
+}
+
+.card-create-container p {
+    margin: 0;
+    padding-left: 20px;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+.card-create-container form {
+    padding: 20px;
+}
+
+.card-create-input {
+    padding: 18px;
+    background-color: #F5F5F5;
+    border: none;
+    border-bottom: 2px solid #9E9E9E;
+    width: 87%;
+    font-size: 14px;
+}
+
+.card-create-input:hover {
+    background-color: #FAFAFA;
+    border-bottom: 2px solid #757575;
+}
+
+.card-create-input:focus {
+    background-color: #FAFAFA;
+    border-bottom: 2px solid #757575;
+}
+
+.card-create-actions {
+    display: inline-block;
+    margin-top: 257px;
+}
+
+.card-create-button {
+    margin-top: 8px;
+    margin-left: 20px;
+    padding: 18px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-bottom: 2px solid #757575;
+    width: 275px;
+}
+
+.button-create {
+    color: white;
+    background-color: #4CAF50;
+    border-bottom: 2px solid #1B5E20;
+}
+
+.button-create:hover {
+    background-color: #81C784;
+    border-bottom: 2px solid #2E7D32;
+}
+
+.button-decline {
+    color: white;
+    background-color: #f44336;
+    border-bottom: 2px solid #500b0b;
+}
+
+.button-decline:hover {
+    background-color: #f55d5a;
+    border-bottom: 2px solid #791010;
+}
+
+
+/* 1080p */
+@media (min-width: 1900px) {
+
+    .left {
+        width: 68%;
+        float: left;
+    }
+
+    .bank-number-button {
+        background-color: #BDBDBD;
+        border: none;
+        border-bottom: 3px solid #757575;
+        font-size: 16px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 70.5px;
+        padding-right: 70.5px;
+        margin: 2px;
+        font-weight: bold;
+    }
+
+    .button-backspace {
+        padding-left: 65px;
+        padding-right: 65px;
+    }
+    
+    .button-enter {
+        padding-left: 70.5px;
+        padding-right: 70.5px;
+    }
+
+    .bank-form {
+        padding: 20px;
+        background-color: #FAFAFA;
+        border: none;
+        font-size: 18px;
+        border-bottom: 3px solid #E0E0E0;
+        width: 315px; 
+    }
+
+    .right {
+        position: absolute;
+        width: 308px;
+        border-radius: 0px 15px 15px 0px;
+        top: 0%;
+        left: 74%;
+        height: 100%;
+        float: right;
+        background-color: #E0E0E0;
+    }
+
+    .bank-button-logout {
+        position: absolute;
+        top: 84.7%;
+        left: -2%;
+        margin: 20px !important;
+        border: none;
+        width: 318px;
+        padding: 20px;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+        background-color: #E53935;
+        border-left: 4px solid #8a1616;
+    }
+    
+    .bank-button-logout:hover {
+        background-color: #ee625f;
+        border-left: 6px solid #af2323;
+    }
+
+    .bank-actions-button {
+        padding: 24px;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: none;
+        border-bottom: 2px solid #E0E0E0;
+        width: 468px;
+    }
+
+    .bank-buttons {
+        margin-bottom: 6px;
+    }
+
+    .bank-form {
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding: 22px;
+        background-color: #FAFAFA;
+        border: none;
+        font-size: 18px;
+        border-bottom: 3px solid #E0E0E0;
+        width: 420px; 
+    }
+    
+  }
+
+/* 4K */
+@media (min-width: 2000px) {
+    .bank-number-button {
+        background-color: #BDBDBD;
+        border: none;
+        border-bottom: 3px solid #757575;
+        font-size: 16px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: 116px;
+        padding-right: 116px;
+        margin: 2px;
+        font-weight: bold;
+    }
+
+    .left {
+        width: 75%;
+        float: left;
+    }
+
+    .button-backspace {
+        padding-left: 110px;
+        padding-right: 110px;
+    }
+    
+    .button-enter {
+        padding-left: 116px;
+        padding-right: 116px;
+    }
+
+    .bank-form {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 42px;
+        background-color: #FAFAFA;
+        border: none;
+        font-size: 18px;
+        border-bottom: 3px solid #E0E0E0;
+        width: 652px; 
+    }
+
+    .right {
+        position: absolute;
+        width: 308px;
+        border-radius: 0px 15px 15px 0px;
+        top: 0%;
+        left: 81%;
+        height: 100%;
+        float: right;
+        background-color: #E0E0E0;
+    }
+
+    .bank-actions-button {
+        margin-bottom: 10px;
+        padding: 32px;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border: none;
+        border-bottom: 2px solid #E0E0E0;
+        width: 740px;
+    }
+
+    .bank-buttons {
+        margin-bottom: 30px;
+    }
+
+    .bank-button-logout {
+        position: absolute;
+        top: 87%;
+        left: -2%;
+        margin: 20px !important;
+        border: none;
+        width: 430px;
+        padding: 30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+        background-color: #E53935;
+        border-left: 4px solid #8a1616;
+    }
+    
+    .bank-button-logout:hover {
+        background-color: #ee625f;
+        border-left: 6px solid #af2323;
+    }
+    
+}
+
+ /* width */
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: tansparent;
+  height: 5px;
+  width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  height: 5px;
+  width: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} 
