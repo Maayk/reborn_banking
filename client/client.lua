@@ -64,12 +64,6 @@ RegisterNUICallback('ClickSound', function(data)
     end
 end)
 
--- RegisterNUICallback('Withdraw', function(data)
---     if IsNearAnyBank() or IsNearAtm() then
---       TriggerServerEvent('pepe-banking:server:withdraw', data.RemoveAmount, data.BankId) 
---     end
--- end)
-
 RegisterNUICallback('Depositar', function(data)
     if IsNearAnyBank() then
       TriggerServerEvent('reborn_banking:Server:Depositar', data.AddAmount) 
