@@ -11,12 +11,10 @@ RebornCore.Functions.CreateCallback('reborn:banking:gethistorico', function(sour
         }
 
         local faturas = exports.ghmattimysql:executeSync('SELECT * FROM reborn_faturas WHERE citizenid=@citizenid ORDER BY `idfatura` DESC LIMIT 50', {['@citizenid'] = Player.PlayerData.citizenid})
-        -- RebornCore.Functions.ExecuteSql(false, "SELECT * FROM reborn_faturas WHERE `citizenid` = '"..Player.PlayerData.citizenid.."' ORDER BY `idfatura` DESC LIMIT 50" , function(faturas)
-            if faturas[1] ~= nil then
-                RebornData.Faturas = faturas
-            end
-            cb(RebornData)
-        -- end)
+        if faturas[1] ~= nil then
+            RebornData.Faturas = faturas
+        end
+        cb(RebornData)
     end
 end)
 
@@ -101,7 +99,6 @@ AddEventHandler('reborn_banking:Server:Transferir', function(iban, amount)
                     if CurrentBalance >= amount then
                         
                         local moneyInfo = json.decode(result[1].money)
-                        -- print(moneyInfo.bank)
                         moneyInfo.bank = moneyInfo.bank + amount
                         RebornCore.Functions.ExecuteSql(false, "UPDATE `players` SET `money` = '"..json.encode(moneyInfo).."' WHERE `citizenid` = '"..result[1].citizenid.."'")
                         sender.Functions.RemoveMoney('bank', amount, "transferencia")
