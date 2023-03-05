@@ -14,6 +14,9 @@ probably everything here is very archaic and can be refactored in a much simpler
 
 this was done around 2019, there are definitely better ways to do it, so improve this and use it!
 
+Discord:
+https://discord.gg/D7mtke9EVy
+
 
 Preview
 ![stack Overflow](https://media.discordapp.net/attachments/492567408557555712/880492566712295434/unknown.png?width=1193&height=671)
