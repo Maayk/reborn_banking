@@ -17,11 +17,11 @@ end)
 RegisterCommand('bank',function(source,args,rawCommand)
 	local jogador1 = PlayerPedId()
 	if jogador1 then
-        if IsNearAnyBank() then
+		if IsNearAnyBank() then
 		    TriggerEvent('RebornBanking:OpenBank')
-        elseif IsNearAtm() then
-            TriggerEvent('RebornBanking:OpenAtm')
-        end
+		elseif IsNearAtm() then
+		    TriggerEvent('RebornBanking:OpenAtm')
+		end
 	end	
 end)
 
