@@ -1,5 +1,5 @@
 # reborn_banking
-A simple banking simple
+A simple banking system
 
 What have?
   - Withdraw
