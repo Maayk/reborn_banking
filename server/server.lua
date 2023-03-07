@@ -124,6 +124,38 @@ AddEventHandler('reborn_banking:Server:Transferir', function(iban, amount)
     end)
 end)
 
+RegisterServerEvent('reborn:historico:add')
+AddEventHandler('reborn:historico:add', function(citizenid,fvalor,ftitulo,fdescricao,ftipo)
+    local date_table = os.date("*t")
+    local ms = string.match(tostring(os.clock()), "%d%.(%d+)")
+    local hour, minute, second = date_table.hour, date_table.min, date_table.sec
+    local year, month, day = date_table.year, date_table.month, date_table.day
+    if  day < 10 then
+        day = '0'..day
+    end
+
+    if  month < 10 then
+        month = '0'..month
+    end
+    if  hour < 10 then
+        hour = '0'..hour
+    end
+    if  minute < 10 then
+        minute = '0'..minute
+    end
+
+    MySQL.insert('INSERT INTO reborn_faturas (citizenid, valor, titulo, descricao, data, hora, tipo) VALUES (@citizenid, @valor, @titulo, @descricao, @data, @hora, @tipo)', {
+        ['@citizenid'] = citizenid,
+        ['@valor'] = fvalor,
+        ['@titulo'] = ftitulo,
+        ['@descricao'] = fdescricao,
+        ['@data'] = day..'/'..month,
+        ['@hora'] = hour..':'..minute,
+        ['@tipo'] = ftipo,
+    })
+
+end)
+
 RegisterServerEvent('reborn_banking:update:balance')
 AddEventHandler('reborn_banking:update:balance', function(id)
     local Player = RebornCore.Functions.GetPlayer(id)
