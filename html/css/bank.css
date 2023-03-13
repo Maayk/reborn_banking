@@ -1,20 +1,7 @@
 body{
      font-family: 'Inter', sans-serif;
 }
-.show-rg{
-     position: relative;
-     top: 30vh;
-     /* left: 141vh; */
-     display: none;
-     float: right;
-     right: 7vh;
-     width: 52.5vh;
-     height: 61.4vh;
-     background-image: url(../img/identidades.png);
-     background-repeat: no-repeat;
-     background-position: -3vh 1vh;
-     background-size: 57vh 65vh;
-}
+
 .foto-pessoal{
      position: absolute;
      top: 38.4vh;
