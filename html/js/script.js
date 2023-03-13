@@ -32,9 +32,6 @@ window.addEventListener('message', function(event) {
         case "updatefatura":
             UpdateFatura(event.data)
             break;
-        case "MostrarIdentidade":
-            ShowIdentidade(event.data)
-            break;
     }
 });
 
@@ -49,38 +46,7 @@ OpenBank = function(data,option) {
     $(".lista-historico").html('');
 
     $.each(data.historico, function (i, historico) {
-        // console.log(historico.titulo)
-
-        if (historico.tipo === "1") {
-            var tipofatura = "+"
-            var textinho = 'Recebeu'
-            var corvalor = 'style="color: #0FA464;"'
-        } else if (historico.tipo === "2") {
-            var tipofatura = "-"
-            var textinho = 'Pagou'
-            var corvalor = ''
-        } else if (historico.tipo === "3") {
-            var tipofatura = "+"
-            var textinho = 'Depositou'
-            var corvalor = 'style="color: #0FA464;"'
-        } else if (historico.tipo === "4") {
-            var tipofatura = "-"
-            var textinho = 'Sacou'
-            var corvalor = 'style="color: red;"'
-        }else if (historico.tipo === "5") {
-            var tipofatura = "+"
-            var textinho = 'Transf Recebida'
-            var corvalor = 'style="color: #0FA464;"'
-        }else if (historico.tipo === "6") {
-            var tipofatura = "-"
-            var textinho = 'Transf Enviada'
-            var corvalor = 'style="color: red;"'
-        }else if (historico.tipo === "7") {
-            var tipofatura = "-"
-            var textinho = 'Compra'
-            var corvalor = 'style="color: red;"'
-        }
-        var history = '<div class="historico-item tooltipped" id="faturaid-'+historico.idfatura+'" data-position="left" data-tooltip="'+historico.descricao+'"><div class="field-nome">'+historico.titulo+'</div><div class="field-data">'+historico.data+', '+historico.hora+'</div><div class="field-tipo">'+textinho+'</div><div class="field-valor" '+corvalor+'>'+tipofatura+''+formatter.format(historico.valor)+'</div></div>';
+        var history = '<div class="historico-item tooltipped" id="faturaid-'+historico.idfatura+'" data-position="left" data-tooltip="'+historico.descricao+'"><div class="field-nome">'+historico.titulo+'</div><div class="field-data">'+historico.data+', '+historico.hora+'</div><div class="field-tipo">'+historico.text+'</div><div class="field-valor" style="color:'+historico.color+';">'+historico.simbolo+''+formatter.format(historico.valor)+'</div></div>';
 
         $(".lista-historico").append(history);
         $('#faturaid-' + historico.idfatura).tooltip()
@@ -89,7 +55,6 @@ OpenBank = function(data,option) {
     });
     $('.movimento_quantidade').html(formatter.format(totalgasto))
 }
-
 
 OnClick = function(type) {
   $.post('https://reborn_banking/ClickSound', JSON.stringify({
@@ -101,7 +66,6 @@ FecharBanco = function () {
     $(".bank-container").fadeOut(750); 
     $.post('https://reborn_banking/CloseApp', JSON.stringify({}))
 }
-
 
 CloseBankApp = function() {
     $(".bank-container").fadeOut(750);
@@ -177,57 +141,11 @@ function UpdateFatura(data) {
     $(".lista-historico").html('');
     totalgasto = 0
     $.each(data.historico, function (i, historico) {
-        if (historico.tipo === "1") {
-            var tipofatura = "+"
-            var textinho = 'Recebeu'
-            var corvalor = 'style="color: #0FA464;"'
-        } else if (historico.tipo === "2") {
-            var tipofatura = "-"
-            var textinho = 'Pagou'
-            var corvalor = ''
-        } else if (historico.tipo === "3") {
-            var tipofatura = "+"
-            var textinho = 'Depositou'
-            var corvalor = 'style="color: #0FA464;"'
-        } else if (historico.tipo === "4") {
-            var tipofatura = "-"
-            var textinho = 'Sacou'
-            var corvalor = 'style="color: red;"'
-        }else if (historico.tipo === "5") {
-            var tipofatura = "+"
-            var textinho = 'Transf Recebida'
-            var corvalor = 'style="color: #0FA464;"'
-        }else if (historico.tipo === "6") {
-            var tipofatura = "-"
-            var textinho = 'Transf Enviada'
-            var corvalor = 'style="color: red;"'
-        }else if (historico.tipo === "7") {
-            var tipofatura = "-"
-            var textinho = 'Compra'
-            var corvalor = 'style="color: red;"'
-        }
-        var history = '<div class="historico-item tooltipped" id="faturaid-'+historico.idfatura+'" data-position="left" data-tooltip="'+historico.descricao+'"><div class="field-nome">'+historico.titulo+'</div><div class="field-data">'+historico.data+', '+historico.hora+'</div><div class="field-tipo">'+textinho+'</div><div class="field-valor" '+corvalor+'>'+tipofatura+''+formatter.format(historico.valor)+'</div></div>';
-
+        var history = '<div class="historico-item tooltipped" id="faturaid-'+historico.idfatura+'" data-position="left" data-tooltip="'+historico.descricao+'"><div class="field-nome">'+historico.titulo+'</div><div class="field-data">'+historico.data+', '+historico.hora+'</div><div class="field-tipo">'+historico.text+'</div><div class="field-valor" style="color:'+historico.color+';">'+historico.simbolo+''+formatter.format(historico.valor)+'</div></div>';
         $(".lista-historico").append(history);
         $('#faturaid-' + historico.idfatura).tooltip()
 
         totalgasto = totalgasto + historico.valor
     });
     $('.movimento_quantidade').html(formatter.format(totalgasto))
-}
-
-function ShowIdentidade(data) {
-    $(".show-rg").fadeIn(750);
-    $(".nome-sobrenome").html(data.nome);
-    $(".field-nomesobrenome").html(data.sobrenome);
-    $(".RG").html(data.rg);
-    $(".data-nascimento").html(data.nascimento);
-    $(".assinatura").html(data.assinatura);
-    $(".nacionalidade").html(data.nacionalidade);
-    $(".genero").html(data.genero);
-    $(".foto-pessoal").css({ "background-image": "url('" + data.fotorg + "')" })
-
-    setTimeout(function() {
-        $(".show-rg").fadeOut(750);
-    }, 10000) 
 }
