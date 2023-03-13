@@ -1,43 +1,14 @@
-local CanOpenBank = false
-local LoggedIn = true
+local QBCore = exports['qb-core']:GetCoreObject()
 
-RebornCore = nil
-
-TriggerEvent("RebornCore:GetObject", function(obj) RebornCore = obj end)    
-
-RegisterNetEvent('RebornCore:Client:OnPlayerLoaded')
-AddEventHandler('RebornCore:Client:OnPlayerLoaded', function()
-    Citizen.SetTimeout(500, function()
-     TriggerEvent("RebornCore:GetObject", function(obj) RebornCore = obj end)    
-      Citizen.Wait(150)
-      LoggedIn = true
-    end)
-end)
-
-RegisterCommand('bank',function(source,args,rawCommand)
+RegisterCommand('banco',function(source,args,rawCommand)
 	local jogador1 = PlayerPedId()
 	if jogador1 then
-		if IsNearAnyBank() then
+        if IsNearAnyBank() then
 		    TriggerEvent('RebornBanking:OpenBank')
-		elseif IsNearAtm() then
-		    TriggerEvent('RebornBanking:OpenAtm')
-		end
+        elseif IsNearAtm() then
+            TriggerEvent('RebornBanking:OpenAtm')
+        end
 	end	
-end)
-
-RegisterNetEvent('Reborn:ShowIdentidade:Player:Recebe')
-AddEventHandler('Reborn:ShowIdentidade:Player:Recebe', function(nome,sobrenome,assinatura,rg,nascimento,fotorg,nacionalidade,genero)
-    SendNUIMessage({
-        action = 'MostrarIdentidade',
-        nome = nome,
-        sobrenome = sobrenome,
-        assinatura = assinatura,
-        rg = rg,
-        nascimento = nascimento,
-        fotorg = fotorg,
-        nacionalidade = nacionalidade,
-        genero = genero
-    })
 end)
 
 RegisterNetEvent('RebornBanking:OpenBank')
@@ -99,7 +70,7 @@ AddEventHandler('reborn_banking:Client:UpdateSaldo', function(newsaldo)
 end)
 
 function UpdateFaturas()
-    RebornCore.Functions.TriggerCallback('reborn:banking:gethistorico', function(pData)
+    QBCore.Functions.TriggerCallback('reborn:banking:gethistorico', function(pData)
         SendNUIMessage({
             action = 'updatefatura',
             historico = pData.Faturas
@@ -112,12 +83,12 @@ RegisterNUICallback('CloseApp', function()
 end)
 
 function OpenBank(CanDeposit, UseAnim)
-    RebornCore.Functions.TriggerCallback('reborn:banking:gethistorico', function(pData)
+    QBCore.Functions.TriggerCallback('reborn:banking:gethistorico', function(pData)
         SetNuiFocus(true, true)
         SendNUIMessage({
             action = 'openbank',
             candeposit = CanDeposit,
-            chardata = RebornCore.Functions.GetPlayerData(),
+            chardata = QBCore.Functions.GetPlayerData(),
             historico = pData.Faturas
         })
     end)   
