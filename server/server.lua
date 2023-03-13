@@ -1,16 +1,20 @@
-RebornCore = nil
+local QBCore = exports['qb-core']:GetCoreObject()
 
-TriggerEvent('RebornCore:GetObject', function(obj) RebornCore = obj end)
+RegisterServerEvent('reborn_banking:update:balance')
+AddEventHandler('reborn_banking:update:balance', function(id)
+    local Player = QBCore.Functions.GetPlayer(id)
+    local newcash = Player.PlayerData.money['bank']
+    TriggerClientEvent('reborn_banking:Client:UpdateSaldo', id, newcash)
+end)
 
-RebornCore.Functions.CreateCallback('reborn:banking:gethistorico', function(source, cb)
+QBCore.Functions.CreateCallback('reborn:banking:gethistorico', function(source, cb)
     local src = source
-    local Player = RebornCore.Functions.GetPlayer(src)
+    local Player = QBCore.Functions.GetPlayer(src)
     if Player ~= nil then
         local RebornData = {
             Faturas = {}
         }
-
-        local faturas = exports.ghmattimysql:executeSync('SELECT * FROM reborn_faturas WHERE citizenid=@citizenid ORDER BY `idfatura` DESC LIMIT 50', {['@citizenid'] = Player.PlayerData.citizenid})
+        local faturas = MySQL.query.await('SELECT * FROM reborn_faturas WHERE citizenid=@citizenid ORDER BY `idfatura` DESC LIMIT 50', {['@citizenid'] = Player.PlayerData.citizenid})
         if faturas[1] ~= nil then
             RebornData.Faturas = faturas
         end
@@ -21,7 +25,7 @@ end)
 RegisterServerEvent('reborn_banking:Server:Depositar')
 AddEventHandler('reborn_banking:Server:Depositar', function(AddAmount)
     local src = source
-    local Player = RebornCore.Functions.GetPlayer(source)
+    local Player = QBCore.Functions.GetPlayer(source)
     local rg = Player.PlayerData.citizenid
      
     if Player ~= nil then
@@ -29,14 +33,10 @@ AddEventHandler('reborn_banking:Server:Depositar', function(AddAmount)
         local CurrentBalance = Player.PlayerData.money['bank']
         local Amount = tonumber(AddAmount)
         if CurrentCash >= Amount then
-            Player.Functions.RemoveMoney('cash', Amount, 'depositando')
-            Player.Functions.AddMoney('bank', Amount, 'recebendo deposito')
-            TriggerEvent('reborn:historico:add',rg,Amount,'RebornBanking','Você depositou na conta','3')
+            Player.Functions.RemoveMoney('cash', Amount, 'deposit')
+            Player.Functions.AddMoney('bank', Amount, 'receiving deposit')
+            TriggerEvent('reborn:historico:add',rg,Amount,'RebornBanking','You deposited into the account','+','Deposit','#0FA464')
             TriggerEvent('reborn_banking:update:balance',src)
-            
-
-            TriggerEvent("Reborn:Logs:EnviandoLogs", "depositando", "Depósito Efetuado", "green", "**".. GetPlayerName(src) .. "** (RG: *"..Player.PlayerData.citizenid.."* ) ID Atual:(*"..src.."*) ```Depositou: $"..Amount.." Dinheiro na Mão: $"..CurrentCash.." Saldo no Banco: $"..CurrentBalance.."```",nil,"deposito")
-
         end
     end
 end)
@@ -44,121 +44,97 @@ end)
 RegisterServerEvent('reborn_banking:Server:Sacar')
 AddEventHandler('reborn_banking:Server:Sacar', function(Sacar)
     local src = source
-    local Player = RebornCore.Functions.GetPlayer(source)
+    local Player = QBCore.Functions.GetPlayer(source)
     local rg = Player.PlayerData.citizenid
      
     if Player ~= nil then
         local CurrentBalance = Player.PlayerData.money['bank']
         local Amount = tonumber(Sacar)
         if CurrentBalance >= Amount then
-            Player.Functions.RemoveMoney('bank', Amount, 'sacando')
-            Player.Functions.AddMoney('cash', Amount, 'recebendo saque')
-            TriggerEvent('reborn:historico:add',rg,Amount,'RebornBanking','Você efetuou um saque','4')
+            Player.Functions.RemoveMoney('bank', Amount, 'Withdraw')
+            Player.Functions.AddMoney('cash', Amount, 'Receiving withdraw')
+            TriggerEvent('reborn:historico:add',rg,Amount,'RebornBanking','You made a withdraw','-','Withdraw','red')
             TriggerEvent('reborn_banking:update:balance',src)
-            TriggerEvent("Reborn:Logs:EnviandoLogs", "sacando", "Saque Efetuado", "red", "**".. GetPlayerName(src) .. "** (RG: *"..Player.PlayerData.citizenid.."* ) ID Atual:(*"..src.."*) ```Sacou: $"..Amount.." Saldo Atual: $"..CurrentBalance.." ```",nil,"saque")
         end
     end
 end)
-
 
 RegisterServerEvent('reborn_banking:Server:Transferir')
 AddEventHandler('reborn_banking:Server:Transferir', function(iban, amount)
     local src = source
-    local sender = RebornCore.Functions.GetPlayer(src)
+    local sender = QBCore.Functions.GetPlayer(src)
+    local reciever = QBCore.Functions.GetPlayer(tonumber(iban))
     local rg = sender.PlayerData.citizenid
     local CurrentBalance = sender.PlayerData.money['bank']
-    RebornCore.Functions.ExecuteSql(false, "SELECT * FROM `players` WHERE `charinfo` LIKE '%"..iban.."%'", function(result)
-        if result[1] ~= nil then
-            local recieverSteam = RebornCore.Functions.GetPlayerByCitizenId(result[1].citizenid)
 
-            if recieverSteam ~= nil then
-                if rg ~= recieverSteam.PlayerData.citizenid then
-                    if CurrentBalance >= amount then
-                        sender.Functions.RemoveMoney('bank', amount, "dinheiro transferido para "..recieverSteam.PlayerData.citizenid)
-                        recieverSteam.Functions.AddMoney('bank', amount, "dinheiro transferido de "..sender.PlayerData.citizenid)
-                        TriggerEvent('reborn:historico:add',recieverSteam.PlayerData.citizenid,amount,"Transferencia","Transferencia Recebida","5")
-                        TriggerEvent('reborn:historico:add',sender.PlayerData.citizenid,amount,"Transferencia","Transferencia Enviada","6")
-                        Wait(500)
-                        TriggerClientEvent('reborn:update:banco:historico', recieverSteam.PlayerData.source)
-                        TriggerClientEvent('reborn:update:banco:historico', src)
-                        
-                        TriggerEvent('reborn_banking:update:balance',src)
-                        TriggerEvent('reborn_banking:update:balance',recieverSteam.PlayerData.source)
-                        TriggerClientEvent('reborn:notify:send',src, "Parabéns","Transferência realizada!","sucesso", 5000)
-                        TriggerClientEvent('reborn:notify:send',recieverSteam.PlayerData.source, "RebornBank","Você recebeu uma Transferencia","sucesso", 5000)
-                        TriggerEvent("Reborn:Logs:EnviandoLogs", "transferencia", "Transferencia Enviada", "red", "**".. GetPlayerName(src) .. "** (RG: *"..sender.PlayerData.citizenid.."* ) ID Atual:(*"..src.."*) ```Transferiu: $"..Amount.." Saldo Atual: $"..CurrentBalance.." ```",nil,"transferencia")
-                        TriggerEvent("Reborn:Logs:EnviandoLogs", "transferencia", "Transferencia Recebida", "green", "**(RG: *"..recieverSteam.PlayerData.citizenid.."* ) ```Recebeu: $"..Amount.." De: "..sender.PlayerData.citizenid.." ```",nil,"transferencia")
-                    else
-                        TriggerClientEvent('reborn:notify:send',src, "Oops","Você não tem esse valor..","erro", 5000)
-                    end
-                else
-                    TriggerClientEvent('reborn:notify:send',src, "???","Esta é sua conta!","erro", 5000)
-                end
-            else
-                if rg ~= result[1].citizenid then
-                    if CurrentBalance >= amount then
-                        
-                        local moneyInfo = json.decode(result[1].money)
-                        moneyInfo.bank = moneyInfo.bank + amount
-                        RebornCore.Functions.ExecuteSql(false, "UPDATE `players` SET `money` = '"..json.encode(moneyInfo).."' WHERE `citizenid` = '"..result[1].citizenid.."'")
-                        sender.Functions.RemoveMoney('bank', amount, "transferencia")
-                        TriggerEvent('reborn:historico:add',result[1].citizenid,amount,"Transferencia","Transferencia Recebida","5")
-                        TriggerEvent('reborn:historico:add',sender.PlayerData.citizenid,amount,"Transferencia","Transferencia Enviada","6")
+    if reciever and reciever.PlayerData and reciever.PlayerData.citizenid then
+        local rg2 = reciever.PlayerData.citizenid
+        if CurrentBalance >= amount then
+            sender.Functions.RemoveMoney('bank', amount, "money transferred to "..reciever.PlayerData.citizenid)
+            reciever.Functions.AddMoney('bank', amount, "money transferred from "..sender.PlayerData.citizenid)
 
-                        TriggerEvent("Reborn:Logs:EnviandoLogs", "transferencia", "Transferencia Enviada", "red", "**".. GetPlayerName(src) .. "** (RG: *"..sender.PlayerData.citizenid.."* ) ID Atual:(*"..src.."*) ```Transferiu: $"..amount.." Saldo Atual: $"..CurrentBalance.." ```",nil,"transferencia")
-                        TriggerEvent("Reborn:Logs:EnviandoLogs", "transferencia", "Transferencia Recebida", "green", "Jogador Estava Offline - (RG: *"..result[1].citizenid.."* ) ```Recebeu: $"..amount.." De: "..sender.PlayerData.citizenid.." Saldo Atual: $"..moneyInfo.bank.." ```",nil,"transferencia")
-                        
-                        Wait(500)
-                        TriggerClientEvent('reborn:update:banco:historico', src)
-                        TriggerEvent('reborn_banking:update:balance',src)
-                    else
-                        TriggerClientEvent('reborn:notify:send',src, "Oops","Você não tem esse valor..","erro", 5000)
-                    end
-                else
-                    TriggerClientEvent('reborn:notify:send',src, "???","Esta é sua conta!","erro", 5000)
-                end
-            end
+            TriggerEvent('reborn_banking:update:balance',src)
+            TriggerEvent('reborn_banking:update:balance',reciever.PlayerData.source)
+            
+            TriggerEvent('reborn:historico:add',rg,amount,'RebornBanking','You made a transfer','-','Transfer Sent','red')
+            TriggerEvent('reborn:historico:add',rg2,amount,'RebornBanking','You received a Transfer','+','Transfer Received','#0FA464')
+
+            TriggerClientEvent('pw:notification:SendAlert', src, {type = "inform", text = "Transfer done!", length = 3500})
+            TriggerClientEvent('pw:notification:SendAlert', reciever.PlayerData.source, {type = "inform", text = "You received a Transfer", length = 3500})
         else
-            TriggerClientEvent('reborn:notify:send',src, "RebornBank","Esta conta não existe!","erro", 5000)
+            TriggerClientEvent('pw:notification:SendAlert', src, {type = "inform", text = "You do not have this amount to transfer", length = 3500})
         end
-    end)
+    else
+        TriggerClientEvent('pw:notification:SendAlert', src, {type = "inform", text = "Player not online", length = 3500})
+    end
 end)
 
+--[[ if you want to transfer to an account that is offline, consult the person's citizenid or account bank directly in mysql
+    local result = MySQL.query.await('SELECT charinfo FROM players WHERE citizenid = @citizenid', {['@citizenid'] = rg2})
+    if result and result[1] and result[1].charinfo then
+        local charinfo = json.decode(result[1].charinfo)
+        if charinfo and type(charinfo) == "table" and charinfo.account then
+            print(charinfo.account)
+        end
+    end
+]]
+
 RegisterServerEvent('reborn:historico:add')
-AddEventHandler('reborn:historico:add', function(citizenid,fvalor,ftitulo,fdescricao,ftipo)
+AddEventHandler('reborn:historico:add', function(citizenid,fvalor,ftitulo,fdescricao,fsimbolo,ftext,fvaluecolor)
     local date_table = os.date("*t")
     local ms = string.match(tostring(os.clock()), "%d%.(%d+)")
     local hour, minute, second = date_table.hour, date_table.min, date_table.sec
     local year, month, day = date_table.year, date_table.month, date_table.day
-    if  day < 10 then
-        day = '0'..day
-    end
+    -- Gets the formatted current date
+    local formatted_date = os.date("%Y-%m-%d")
 
-    if  month < 10 then
-        month = '0'..month
-    end
-    if  hour < 10 then
-        hour = '0'..hour
-    end
-    if  minute < 10 then
-        minute = '0'..minute
-    end
+    -- Gets the current time in seconds from the epoch and formats it as a string
+    local current_time = os.time()
+    local formatted_time = os.date("%H:%M:%S", current_time)
 
-    MySQL.insert('INSERT INTO reborn_faturas (citizenid, valor, titulo, descricao, data, hora, tipo) VALUES (@citizenid, @valor, @titulo, @descricao, @data, @hora, @tipo)', {
+    -- Add milliseconds to end of formatted time
+    local ms = string.match(tostring(os.clock()), "%d%.(%d+)")
+    formatted_time = formatted_time .. "." .. ms
+
+    -- Add leading zeros to values less than 10
+    local hour, minute, second = tonumber(formatted_time:sub(1, 2)), tonumber(formatted_time:sub(4, 5)), tonumber(formatted_time:sub(7, 8))
+    hour = string.format("%02d", hour)
+    minute = string.format("%02d", minute)
+    second = string.format("%02d", second)
+
+    -- Combines the formatted date and time into a string
+    local formatted_datetime = formatted_date .. " " .. hour .. ":" .. minute .. ":" .. second .. "." .. ms
+
+    MySQL.insert('INSERT INTO reborn_faturas (citizenid, valor, titulo, descricao, data, hora, simbolo, text, color) VALUES (@citizenid, @valor, @titulo, @descricao, @data, @hora, @simbolo, @text, @color)', {
         ['@citizenid'] = citizenid,
         ['@valor'] = fvalor,
         ['@titulo'] = ftitulo,
         ['@descricao'] = fdescricao,
         ['@data'] = day..'/'..month,
         ['@hora'] = hour..':'..minute,
-        ['@tipo'] = ftipo,
+        ['@simbolo'] = fsimbolo,
+        ['@text'] = ftext,
+        ['@color'] = fvaluecolor,
     })
 
-end)
-
-RegisterServerEvent('reborn_banking:update:balance')
-AddEventHandler('reborn_banking:update:balance', function(id)
-    local Player = RebornCore.Functions.GetPlayer(id)
-    local newcash = Player.PlayerData.money['bank']
-    TriggerClientEvent('reborn_banking:Client:UpdateSaldo', id, newcash)
 end)
