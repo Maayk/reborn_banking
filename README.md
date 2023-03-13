@@ -10,10 +10,6 @@ What have?
 
 the look was based on something I found on behance
 
-probably everything here is very archaic and can be refactored in a much simpler and faster way, when I have time I'll do it.
-
-this was done around 2019, there are definitely better ways to do it, so improve this and use it!
-
 Discord:
 https://discord.gg/D7mtke9EVy
 
