@@ -14,17 +14,6 @@
     <link rel="stylesheet" href="./css/bank.css">
 </head>
     <body>
-        <div class="show-rg">
-            <div class="foto-pessoal"></div>
-            <div class="nome-sobrenome">Mayk</div>
-            <span class="field-nomesobrenome">Seu Nome</span>
-            <div class="RG"><span class="rg-pessoa">WMK62908</span></div>
-            <div class="Nascimento"><span class="data-nascimento">02/03/1996</span></div>
-            <div class="assinatura">Mayk Alexander</div>
-            <div class="nacionalidade">Nacionalidade</div>
-            <div class="genero">feminino</div>
-        </div>
-
         <div class="bank-container">
             <div class="left-container">
                 <div class="logo-header">
@@ -38,27 +27,27 @@
             <div class="home-container">
                 <div class="alinhado-esquerda">
                     <div class="titulo-second">Overview</div>
-                    <div class="avatar-icone tooltipped" data-position="top" data-tooltip="Sua foto"></div>
+                    <div class="avatar-icone tooltipped" data-position="top" data-tooltip="Your Picture"></div>
                     <div class="saldo-container">
-                        <span class="saldo-field">Saldo Atual</span>
+                        <span class="saldo-field">Current Balance</span>
                         <div class="saldo-conta">R$4,290.80</div>
                     </div>
                     <div class="contas-banco">
                         <div class="header-contas">
-                            <div class="contas-item">Contas<i class="material-icons">keyboard_arrow_down</i></div>
+                            <div class="contas-item">Cards<i class="material-icons">keyboard_arrow_down</i></div>
                             <div class="contas-item2"></div>
                         </div>
-                        <div class="conta-cartao tooltipped" data-position="bottom" data-tooltip="Cartão de Débito">
+                        <div class="conta-cartao tooltipped" data-position="bottom" data-tooltip="Debit card">
                             <div class="card-bankname">Reborn<logo>Bank</logo></div>
                             <div class="card-ownername">Mayk Alexander</div>
                             <div class="validade-area">
-                                <span class="validade-field">Validade</span>
-                                <span class="validade-data">04/22</span>
+                                <span class="validade-field">Validity</span>
+                                <span class="validade-data">04/27</span>
                             </div>
                             <div class="card-bandeira"></div>
                         </div>
                         <div class="movimento-conta">
-                            <div class="movimentacao">Sua conta movimentou Recentemente <span class="movimento_quantidade"></span></div>
+                            <div class="movimentacao">Your account moved recently <span class="movimento_quantidade"></span></div>
                         </div>
                     </div>
                 </div>
@@ -66,45 +55,45 @@
                     <div class="row tab-banco">
                         <div class="col s12">
                           <ul  class="tabs">
-                            <li class="tab col s4"><a class="active" href="#area-deposito">Depósito</a></li>
-                            <li class="tab col s5"><a href="#area-transferencia">Transferência</a></li>
-                            <li class="tab col s3"><a href="#area-saque">Saque</a></li>
+                            <li class="tab col s4"><a class="active" href="#area-deposito">Deposit</a></li>
+                            <li class="tab col s5"><a href="#area-transferencia">Transfer</a></li>
+                            <li class="tab col s3"><a href="#area-saque">Withdraw</a></li>
                           </ul>
                         </div>
                         <div id="area-deposito" class="col s14">
-                            <div class="titulo-box">Depositar Valor</div>
+                            <div class="titulo-box">Deposit</div>
                             <div class="centered">
                                 <div class="input-field col s13">
                                     <input id="deposit_input" autocomplete="off" type="number" class="validate">
-                                    <label for="deposit_input">Valor</label>
+                                    <label for="deposit_input">Amount</label>
                                 </div>
-                                <div class="deposit-button waves-effect waves-light">Depositar</div>
+                                <div class="deposit-button waves-effect waves-light">Deposit</div>
                             </div>
                         </div>
                         <div id="area-transferencia" class="col s12">
-                            <div class="titulo-box">Transferência de Valores</div>
+                            <div class="titulo-box">Transfer</div>
                             <div class="centered">
                                 <div class="input-field col s6">
-                                    <input placeholder="Conta de Destino" id="transfaccount_input" type="text" class="validate">
+                                    <input placeholder="Temporary ID" id="transfaccount_input" type="text" class="validate">
                                     <label for="transfaccount_input">Conta</label>
-                                    <span class="helper-text" data-error="wrong" data-success="Ok">Exemplo: RB683266</span>
+                                    <span class="helper-text" data-error="wrong" data-success="Ok">Example Temporary ID: 36</span>
                                   </div>
                                   <div class="input-field col s6">
                                     <input id="transf_input" type="number" min="0" class="validate">
-                                    <label for="transf_input">Valor</label>
-                                    <span class="helper-text" data-error="Valor incorreto" data-success="Ok">Digite o Valor</span>
+                                    <label for="transf_input">Amount</label>
+                                    <span class="helper-text" data-error="Valor incorreto" data-success="Ok">Enter the Value</span>
                                 </div>
-                                <div class="transf-button waves-effect waves-light">Transferir</div>
+                                <div class="transf-button waves-effect waves-light">Transfer</div>
                             </div>
                         </div>
                         <div id="area-saque" class="col s12">
-                            <div class="titulo-box">Sacar Quantia</div>
+                            <div class="titulo-box">Withdraw Amount</div>
                             <div class="centered">
                                 <div class="input-field col s13">
                                     <input id="saque_input" autocomplete="off" min="1" type="number" class="validate">
-                                    <label for="saque_input">Valor</label>
+                                    <label for="saque_input">Amount</label>
                                 </div>
-                                <div class="sacar-button waves-effect waves-light">Sacar</div>
+                                <div class="sacar-button waves-effect waves-light">Withdraw</div>
                             </div>
                         </div>
                     </div>
