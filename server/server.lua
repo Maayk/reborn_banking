@@ -89,16 +89,6 @@ AddEventHandler('reborn_banking:Server:Transferir', function(iban, amount)
     end
 end)
 
---[[ if you want to transfer to an account that is offline, consult the person's citizenid or account bank directly in mysql
-    local result = MySQL.query.await('SELECT charinfo FROM players WHERE citizenid = @citizenid', {['@citizenid'] = rg2})
-    if result and result[1] and result[1].charinfo then
-        local charinfo = json.decode(result[1].charinfo)
-        if charinfo and type(charinfo) == "table" and charinfo.account then
-            print(charinfo.account)
-        end
-    end
-]]
-
 RegisterServerEvent('reborn:historico:add')
 AddEventHandler('reborn:historico:add', function(citizenid,fvalor,ftitulo,fdescricao,fsimbolo,ftext,fvaluecolor)
     local date_table = os.date("*t")
